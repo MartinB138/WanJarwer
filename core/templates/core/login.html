@@ -1,0 +1,73 @@
+﻿
+{% load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="{% static login %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="img/IPARKING.ico" />
+    <script>
+
+        function validarFormulario()
+        {
+
+            var txtCorreo = document.getElementById('correo').value;
+            var txtPass = document.getElementById('pass').value;
+
+            /*metodo validar*/
+            if(!(/\S+@\S+\.\S+/.test(txtCorreo))){
+			alert('ERROR: Debe escribir un correo válido');
+			document.datos.correo.value="";
+			document.datos.correo.focus();
+			return false;
+		}
+
+            if(txtPass == null || txtPass.length == 0 || /^\s+$/.test(txtPass))
+            {
+			alert('ERROR: Correo o clave invalida ');
+			document.datos.pass.focus();
+			return false;
+		    }
+
+            return true;
+
+
+
+
+
+        }
+    </script>
+
+
+</head>
+<body>
+    <form class="formulario" action="construccion.html" onsubmit="return validarFormulario()">
+
+        <h1>Inicio Sesion</h1>
+        <div class="contenedor">
+
+
+
+            <div class="input-contenedor">
+                <i class="fas fa-envelope icon"></i>
+                <input type="text" id="correo" placeholder="Correo Electronico">
+
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-key icon"></i>
+                <input type="password" id="pass" placeholder="Contraseña">
+
+            </div>
+            <input type="submit" value="Login" class="button">
+            <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+            <p>¿No tienes una cuenta? <a class="link" href="{% url 'sig' %}">Registrate </a></p>
+            <p><a class="link" href="{% url 'home' %}">Volver inicio</a></p>
+        </div>
+    </form>
+</body>
+</html>

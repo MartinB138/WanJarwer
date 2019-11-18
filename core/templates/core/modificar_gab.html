@@ -1,0 +1,117 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WanJarwar - informate de tu hardware</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Style.css' %}">
+</head>
+<header>
+
+        <img src="{% static 'img/fondoo.jpg' %}" class="ajusteheader">
+
+        
+</header>
+<body>
+  
+        <!-- Menu -->
+        <nav class="navbar bg-primary navbar-expand-lg navbar-dark bg-dark sticky-top" >
+
+                <!-- Boton que aparece cuando la pantalla es muy chica -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Fin Boton que aparece cuando la pantalla es muy chica -->
+               
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img src="{% static 'img/logo.png' %}" width="200" height="45" class="d-inline-block align-top" alt="">
+                        
+                    </a>
+                    <!-- Fin logo -->
+    
+                        <!-- Menu fijo -->
+                          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                            <ul class="navbar-nav text">
+                                <li class="nav-item">
+                                  <a class="nav-link bg-dark" href="{% url 'proc' %}">PROCESADORES</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link bg-dark" href="{% url 'graf' %}">TARJETAS DE VIDEO</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link bg-dark" href="{% url 'ram' %}">RAM</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link active" href="{% url 'gab' %}">GABINETES</a>
+                                </li>
+                            </ul>
+                          </div>
+                          <!-- Boton login y register -->
+                          <ul class="navbar-nav text-sr">
+                              <li class="nav-item dropdown show text-sr">
+                                  <a class="nav-link dropdown-toggle text-sr" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <img src="{% static 'img/user-login.png' %}" height=20px width=20px>
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="will-change: transform; top: 0px; left: 0px; transform: translate3d(-95px, 37px, 0px);">
+                                      <a class="dropdown-item" href="{% url 'log' %}">Iniciar Sesión</a>
+                                      <a class="dropdown-item" href="{% url 'sig' %}">Registrate</a>
+                                  </div>
+                              </li>
+                          </ul>
+                  <!-- fin Boton login y register -->
+                        <!-- Menu fijo-->
+            </nav>
+            <!-- fin menu -->
+        <li class="title1" id="title1">Modificando Gabinete</li>
+
+        <section class="container">
+            <form action="" id="formularioGrafica" method="POST">
+                {% csrf_token %}
+
+                <input type = "hidden" name="txtId" id="txtId" value="{{ gab.id }}">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Marca de Gabinete</label>
+                    <input class="form-control" name="txtMarca" type="text" placeholder="Ingresa nombre del procesador" value="{{ gab.marca_gabinete }}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Nombre Gabinete</label>
+                    <input class="form-control" name="txtNombre" type="text" placeholder="Ingresa sus nucleos" value="{{ gab.nombre_gabinete }}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Seleccione Marca</label>
+                    <select class="form-control" name="cbTipo" id="cbTipo">
+                        
+                        {% for m in marcaga %}
+                            <option
+                            {% if m.id == gab.tipo_gabinete.id %}
+                            {{'selected'}}
+                            {% endif %}
+
+                            value="{{ m.id }}">{{m.nomge}}</option>
+                        {% endfor %}
+                        
+                        
+
+                        
+                    </select>
+                </div>   
+                    <input type="submit" name="btnSave" id="btnSave" class="btn btn-danger" value="Guardar">
+                </div>
+            </form>
+            <h3>{{ mensaje }}</h3>
+
+            
+        </section>
+        <hr>
+        <hr>
+        
+
+</body>
+</html>

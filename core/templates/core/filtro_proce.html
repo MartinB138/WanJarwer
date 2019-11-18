@@ -1,0 +1,17 @@
+<center>
+        <form action="" method="POST">
+            Busca tu procesador
+            <input type="text" name"nommarc" value="{{nommarc}}">
+            <input type="submit" class="btn btn-danger" value="Filtrar">
+            {% csrf_token%}
+        </form>
+
+        <li class="title1">Filtrado de Procesadores</li> 
+            <ul>
+                {% for m in proce %}
+                <li>{{m.proce}}, {{m.proceN}}, {{m.core}}, {{m.threads}}, {{m.frecMini}}, {{m.frecMax}}</li>
+                {% endfor %}
+            </ul>
+
+          
+</center>

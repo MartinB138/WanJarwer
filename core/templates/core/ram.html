@@ -1,0 +1,189 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WanJarwar - informate de tu hardware</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Style.css' %}">
+</head>
+<header>
+
+        <img src="{% static 'img/fondoo.jpg' %}" class="ajusteheader">
+
+        
+</header>
+<body>
+  
+        <!-- Menu -->
+        <nav class="navbar bg-primary navbar-expand-lg navbar-dark bg-dark sticky-top" >
+
+            <!-- Boton que aparece cuando la pantalla es muy chica -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Fin Boton que aparece cuando la pantalla es muy chica -->
+           
+                <!-- Logo -->
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'img/logo.png' %}" width="200" height="45" class="d-inline-block align-top" alt="">
+                    
+                </a>
+                <!-- Fin logo -->
+
+                    <!-- Menu fijo -->
+                      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav text">
+                            <li class="nav-item">
+                              <a class="nav-link bg-dark" href="{% url 'proc' %}">PROCESADORES</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link bg-dark" href="{% url 'graf' %}">TARJETAS DE VIDEO</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link active" href="{% url 'ram' %}">RAM</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link bg-dark" href="{% url 'gab' %}">GABINETES</a>
+                            </li>
+                        </ul>
+                      </div>
+                      <!-- Boton login y register -->
+                      <div style="will-change: transform; top: 0px; left: 0px; transform: translate3d(-95px, 0px, 0px);"> 
+                            <form class="form-inline">
+                              <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Buscar...">
+                              <div class="input-group-appened" style="transform: translate3d(-15px, 0px, 0px);">
+                                <button href="#" class="btn btn-light" type="submit"><i class="fas fa-search"><img src="{% static 'img/buscar.png' %}" height=20px width=20px></i></button>
+                              </div>
+                            </form>
+                        </div>
+                          <!-- Boton login y register -->
+                          <ul class="navbar-nav text-sr" style="will-change: transform; top: 0px; left: 0px; transform: translate3d(-80px, 0px, 0px);">
+                              <li class="nav-item dropdown show text-sr">
+                                  <a class="nav-link dropdown-toggle text-sr" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <img src="{% static 'img/user-login.png' %}" height=20px width=20px>
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="will-change: transform; top: 0px; left: 0px; transform: translate3d(-95px, 44px, 0px);">
+                                      <a class="dropdown-item" href="{% url 'log' %}">Iniciar Sesión</a>
+                                      <a class="dropdown-item" href="{% url 'sig' %}">Registrate</a>
+                                  </div>
+                              </li>
+                          </ul>
+                <!-- fin Boton login y register -->
+                    <!-- Menu fijo-->
+        </nav>
+        <!-- fin menu -->
+        <li class="title1" id="title1">Agrega una Ram!</li>
+
+        <section class="container border">
+            <form action="" id="formularioRam" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Marca</label>
+                    <input class="form-control" name="txtMarca" id="txtMarca" type="text" placeholder="Ingrese Marca de la Ram">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Nombre de Ram</label>
+                    <input class="form-control" name="txtNombre" id="txtNombre" type="text" placeholder="Ingrese nombre de la Ram">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Gigabytes</label>
+                    <input class="form-control" name="txtGb" id="txtGb" type="text" placeholder="Ingresas Gbs">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Frecuencia</label>
+                    <input class="form-control" name="txtFrec" id="txtFrec" type="text" placeholder="Ingresa frecuencia (MHz)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Voltaje</label>
+                    <input class="form-control" name="txtVolt" id="txtVolt" type="text" placeholder="Ingresa Voltaje ">
+                </div>
+                <div>    
+                    <input type="submit" name="btnSave" id="btnSave" class="btn btn-danger" value="Guardar">
+                </div>
+
+            </form>
+            <h3>{{ mensaje }}</h3> 
+        </section>
+        <section>
+                <li class="title1" id="title1">Listado de Rams</li>
+                    <div class="container">
+                            <div class="row">
+                              <div class="col-12">
+                                  <table class="table border">   
+                                    <thead class="thead-light">
+                                      <tr>
+                                        <th scope="row">Marca</th>
+                                        <th scope="row">Nombre RAM</th>
+                                        <th scope="row">Gigabites</th>
+                                        <th scope="row">Frecuencia</th>
+                                        <th scope="row">Voltaje</th>
+                                        <th scope="row">Acción</th>        
+                                      </tr>
+                                    </thead>
+                                    {% for a in ram %}
+                                    <tbody>     
+                                      <tr>
+                                            <td>{{ a.marcr }}</td>
+                                            <td>{{ a.nomr }}</td>
+                                            <td>{{ a.gbs }}</td>
+                                            <td>{{ a.frecMinn }}</td>
+                                            <td>{{ a.volt }}</td>
+                                            <td>
+                                            <!-- BOTON MODIFICAR MESSAGE -->
+                                            <a href="{% url 'modificar_ram' a.id %}" role="button" class="btn btn-primary badge-pill" value="Modificar">Modificar</a>
+                                            <!-- Modal -->
+                                            <!-- BOTON ELIMINAR MESSAGE -->
+                                            <button role="button" class="btn btn-danger badge-pill" data-toggle="modal" data-target="#myModal">Eliminar</button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                              <div class="modal-dialog">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                 <div class="modal-header">
+                                                    <h2 class="modal-title">Eliminar</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                 </div>
+                                                  <div class="modal-body">
+                                                    <p>¿Eliminar Permanentemente?</p>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <a href="{% url 'eliminar_ram' a.id %}" role="button" class="btn btn-danger" value="Eliminar">Si</a>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            </td>
+                                      </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                  </table>   
+                              </div>
+                            </div>
+                          </div>
+            </section>
+            <center>
+            <section>
+            <center>
+              {% if messages %}
+
+            {% for m in messages %}
+
+                <div>{{ m }}</div>
+
+            {% endfor %}
+
+        {% endif %}
+        </center>
+        </center>
+            </section>
+            
+            
+</body>
+</html>

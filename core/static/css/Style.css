@@ -1,0 +1,45 @@
+body{
+  font-family: 'Raleway', sans-serif;
+}
+.recorteimagencircular{
+	margin-top: -50px;
+	border: 2px solid #ddd;
+}
+
+.ajusteheader{
+	width: 100%
+}
+.title1{
+	border-bottom: 3px solid transparent;
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.resaltado{
+  color: #d35400;
+}
+
+.text {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 15.5px;
+  color: #d35400;
+}
+
+.text-sr {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 15px;
+}
+
+#navbar {
+  min-height: 60px;
+
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
